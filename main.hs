@@ -22,12 +22,48 @@ inverterLista :: [(Char,Int)] -> [(Char,Int)]
 inverterLista [] = []
 inverterLista (a:x) = (inverterLista x) ++ [a]
 
+-- INICIO FUNÇÕES ALAN
+
+{-
+Funções prontas uttilizadas:
+fst e snd: retornam o primeiro e segundo elementos de uma tupla
+
+particaoMenores lista num = [ (simbolo, codigo) | (simbolo, codigo) <- lista, codigo <= num ]
+particaoMaiores lista num = [ (simbolo, codigo) | (simbolo, codigo) <- lista, codigo > num ]
+quicksort [] = []
+quicksort (p:lista)=(quicksort (particao1 p lista)) ++ [p] ++ (quicksort (particao2 p lista))
+
+
+-}
+
+-- ordena as tuplas (char, frequencia) em ordem
+-- decrescente de frequencia. O critério de
+-- desempate fica por sua conta
+ordenar :: [(Char, Int)] -> [(Char, Int)]
+ordenar [] = []
+ordenar (a:lista) = (ordenar (particaoMaiores lista a)) ++ [a] ++ (ordenar (particaoMenores lista a))
+  where
+    particaoMenores lista (simbolo, pivo) = [ (simbolo, codigo) | (simbolo, codigo) <- lista, codigo < pivo ]
+    particaoMaiores lista (simbolo, pivo) = [ (simbolo, codigo) | (simbolo, codigo) <- lista, codigo >= pivo ]
+
+-- dada uma tupla (char, frequencia) devolver uma
+-- tupla (char, codigo_binario)
+-- gerarCodigos :: [(Char, Int)] -> [(Char, String)] 
+
+
+
+-- FIM FUNÇÕES ALAN
+
+
 main :: IO()
 main = do
+    {-
     putStrLn "Digite uma palavra qualquer: "
     palavra <- getLine
     print (removerDup (inverterLista (frequencia palavra)))
-    
+    -}
+
+    print(ordenar [('a',5),('b',2),('r',2),('c',1),('d',1)])
     
     
     
