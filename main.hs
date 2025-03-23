@@ -80,3 +80,8 @@ main = do
     putStrLn "Digitar palavra: "
     palavra <- getLine
     print (huffman palavra)
+
+-- Funcoes implementadas
+-- Caio: frequencia removerDup inverterLista contar
+-- Alan: ordenar gerarCodigos
+-- Gilberto: frequenciaJaVistos huffman codificar
