@@ -83,5 +83,5 @@ main = do
 
 -- Funcoes implementadas
 -- Caio: frequencia removerDup inverterLista contar
--- Alan: ordenar gerarCodigos
+-- Alan: ordenar gerarCodigos particaoMaiores
 -- Gilberto: frequenciaJaVistos huffman codificar
