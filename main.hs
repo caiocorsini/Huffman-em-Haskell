@@ -53,8 +53,13 @@ gerarCodigos lista = combinar lista tabelaCodigos
 -- codificar
 codificar :: String -> [(Char, String)] -> String
 codificar [] _ = ""
-
-
+codificar (x:xs) tabela = buscarCodigo x tabela ++ codificar xs tabela
+  where
+    buscarCodigo _ [] = "" -- se nao houver o caractere na tabela de codigos
+    buscarCodigo c ((ch, codigo):resto)
+      | c == ch = codigo
+      | otherwise = buscarCodigo c resto
+    
 
 -- FIM FUNÇÕES GILBERTO
 
