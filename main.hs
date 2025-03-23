@@ -90,3 +90,5 @@ main = do
     putStrLn ("Mensagem original: " ++ mensagem)
     putStrLn ("Mensagem codificada: " ++ codificada)
     
+    let resultadoFinal = huffman "abracadabra"
+    putStrLn ("Resultado final da função huffman: " ++ resultadoFinal)
