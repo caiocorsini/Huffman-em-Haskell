@@ -59,6 +59,15 @@ codificar (x:xs) tabela = buscarCodigo x tabela ++ codificar xs tabela
     buscarCodigo c ((ch, codigo):resto)
       | c == ch = codigo
       | otherwise = buscarCodigo c resto
+
+
+-- huffman
+huffman :: String -> String
+huffman entrada = codificar entrada tabelaCodigos
+  where
+    listaFrequencia = removerDup(inverterLista(frequencia entrada))
+    listaOrdenada = ordenar listaFrequencia
+    tabelaCodigos = gerarCodigos listaOrdenada
     
 
 -- FIM FUNÇÕES GILBERTO
