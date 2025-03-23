@@ -50,6 +50,11 @@ gerarCodigos lista = combinar lista tabelaCodigos
 
 -- FUNÇÕES GILBERTO
 
+-- codificar
+codificar :: String -> [(Char, String)] -> String
+codificar [] _ = ""
+
+
 
 -- FIM FUNÇÕES GILBERTO
 
