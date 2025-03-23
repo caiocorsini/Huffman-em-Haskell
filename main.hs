@@ -3,10 +3,16 @@ contar :: [Char] -> Char -> Int
 contar [] c = 0
 contar (a:x) c = if c == a then 1 + contar x c else contar x c
 
+
+frequenciaJaVistos :: [Char] -> [Char] -> [(Char, Int)]
+frequenciaJaVistos [] _ = []
+frequenciaJaVistos (x:xs) jaVistos 
+  | x `elem` jaVistos = frequenciaJaVistos xs jaVistos
+  | otherwise = (x, contar (x:xs) x): frequenciaJaVistos xs (x : jaVistos)
+
 -- Monta a lista de contagem de caracteres de uma string
 frequencia :: [Char] -> [(Char,Int)]
-frequencia [] = []
-frequencia (a:x) = (a,contar (a:x) a) : frequencia x
+frequencia palavra = frequenciaJaVistos palavra [] 
 
 -- Remove tuplas duplicatas. Somente o da esquerda
 -- elem verifica se "a" se encontra repetido em alguma lista
