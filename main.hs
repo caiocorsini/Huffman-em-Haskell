@@ -75,5 +75,9 @@ main = do
     print(ordenar [('a',1),('b',5),('r',2),('c',8),('d',1)])
     print(gerarCodigos[('c',8),('b',5),('r',2),('d',1),('a',1)])
     
-    
+    let mensagem = "abracadabra"
+    let tabela = [('a',"0"),('b',"10"),('r',"11"),('c',"1100"),('d',"1101")]
+    let codificada = codificar mensagem tabela
+    putStrLn ("Mensagem original: " ++ mensagem)
+    putStrLn ("Mensagem codificada: " ++ codificada)
     
