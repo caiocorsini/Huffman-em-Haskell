@@ -48,6 +48,12 @@ gerarCodigos lista = combinar lista tabelaCodigos
 -- FIM FUNÇÕES ALAN
 
 
+-- FUNÇÕES GILBERTO
+
+
+-- FIM FUNÇÕES GILBERTO
+
+
 main :: IO()
 main = do
     {-
