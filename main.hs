@@ -3,10 +3,15 @@ contar :: [Char] -> Char -> Int
 contar [] c = 0
 contar (a:x) c = if c == a then 1 + contar x c else contar x c
 
+frequenciaJaVistos :: [Char] -> [Char] -> [(Char, Int)]
+frequenciaJaVistos [] _ = []
+frequenciaJaVistos (x:xs) jaVistos 
+  | x `elem` jaVistos = frequenciaJaVistos xs jaVistos
+  | otherwise = (x, contar (x:xs) x): frequenciaJaVistos xs (x : jaVistos)
+
 -- Monta a lista de contagem de caracteres de uma string
 frequencia :: [Char] -> [(Char,Int)]
-frequencia [] = []
-frequencia (a:x) = (a,contar (a:x) a) : frequencia x
+frequencia palavra = frequenciaJaVistos palavra [] 
 
 -- Remove tuplas duplicatas. Somente o da esquerda
 -- elem verifica se "a" se encontra repetido em alguma lista
@@ -48,6 +53,31 @@ gerarCodigos lista = combinar lista tabelaCodigos
 -- FIM FUNÇÕES ALAN
 
 
+-- FUNÇÕES GILBERTO
+
+-- codificar
+codificar :: String -> [(Char, String)] -> String
+codificar [] _ = ""
+codificar (x:xs) tabela = buscarCodigo x tabela ++ codificar xs tabela
+  where
+    buscarCodigo _ [] = "" -- se nao houver o caractere na tabela de codigos
+    buscarCodigo c ((ch, codigo):resto)
+      | c == ch = codigo
+      | otherwise = buscarCodigo c resto
+
+
+-- huffman
+huffman :: String -> String
+huffman entrada = codificar entrada tabelaCodigos
+  where
+    listaFrequencia = removerDup(inverterLista(frequencia entrada))
+    listaOrdenada = ordenar listaFrequencia
+    tabelaCodigos = gerarCodigos listaOrdenada
+    
+
+-- FIM FUNÇÕES GILBERTO
+
+
 main :: IO()
 main = do
     {-
@@ -59,5 +89,11 @@ main = do
     print(ordenar [('a',1),('b',5),('r',2),('c',8),('d',1)])
     print(gerarCodigos[('c',8),('b',5),('r',2),('d',1),('a',1)])
     
+    let mensagem = "abracadabra"
+    let tabela = [('a',"0"),('b',"10"),('r',"11"),('c',"1100"),('d',"1101")]
+    let codificada = codificar mensagem tabela
+    putStrLn ("Mensagem original: " ++ mensagem)
+    putStrLn ("Mensagem codificada: " ++ codificada)
     
-    
+    let resultadoFinal = huffman "abracadabra"
+    putStrLn ("Resultado final da função huffman: " ++ resultadoFinal)
