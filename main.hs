@@ -3,7 +3,6 @@ contar :: [Char] -> Char -> Int
 contar [] c = 0
 contar (a:x) c = if c == a then 1 + contar x c else contar x c
 
-
 frequenciaJaVistos :: [Char] -> [Char] -> [(Char, Int)]
 frequenciaJaVistos [] _ = []
 frequenciaJaVistos (x:xs) jaVistos 
